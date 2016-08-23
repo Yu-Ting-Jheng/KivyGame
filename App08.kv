@@ -1,0 +1,52 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+
+<LoveStoryGame>:
+    transition: FadeTransition() 
+    StartScreen:
+    GameScreen:
+
+<StartScreen>
+    name: "start"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'comics_01.jpg'
+
+    FloatLayout:
+        Button:
+            text: "Play!"
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x':.5, 'center_y':.25}
+            font_size: 50
+            on_press: root.manager.current = "game"
+
+
+    Label:
+        text: 'LOVE APP'
+        font_size: 70
+
+
+<GameScreen>:
+    name: "game"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'comics_02.jpg'
+
+    FloatLayout:
+        Button:
+            text: "restart!"
+            font_size: 50
+            size_hint: 0.25, 0.15
+            pos_hint: {'center_x':.2, 'center_y':.1}
+            on_press: root.manager.current  = "start"
+    
+    Label:
+        id:game_score
+        font_size: 70  
+        text: '0'
+        color: 0.5,0.1,0.1,1
+        pos_hint: {'center_x':.9, 'center_y':.1}
